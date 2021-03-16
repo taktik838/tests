@@ -1,0 +1,11 @@
+# python
+__pycache__/
+venv/
+.pytest_cache/
+
+# npm
+node_modules/
+package-lock.json
+
+chromedriver*
+src/reports/
