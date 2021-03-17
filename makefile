@@ -9,3 +9,6 @@ check_sercher:
 	allure serve src/reports
 clear_reports:
 	rm -f src/reports/*
+install_allure:
+	sudo apt install npm
+	sudo npm install -g allure-commandline —save-dev
