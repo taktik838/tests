@@ -2,6 +2,7 @@ import pytest
 import allure
 import unittest
 from selenium import webdriver
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -35,39 +36,43 @@ def test_next_results(driver: webdriver.Chrome):
             lambda x: x.get_attribute('id'), 
             driver.find_elements_by_css_selector('#mainbar > div.flush-left.js-search-results > div > div')
         ))
+    # time.sleep(5)
     assert set(result_ids) & set(next_result_ids) == set(), 'Запросы повторяются'
 
 
 def test_15_per_page(driver: webdriver.Chrome):
     test_launch_site(driver)
-    with allure.step('Click to Next'):
+    with allure.step('Click to 15'):
         bt = driver.find_element_by_css_selector('#mainbar > div.s-pagination.page-sizer.fr > a:nth-child(1)')
         bt.click()
         result_ids = list(map(
             lambda x: x.get_attribute('id'), 
             driver.find_elements_by_css_selector('#mainbar > div.flush-left.js-search-results > div > div')
         ))
+    # time.sleep(5)
     assert len(result_ids) == 15
 
 def test_30_per_page(driver: webdriver.Chrome):
     test_launch_site(driver)
-    with allure.step('Click to Next'):
+    with allure.step('Click to 30'):
         bt = driver.find_element_by_css_selector('#mainbar > div.s-pagination.page-sizer.fr > a:nth-child(2)')
         bt.click()
         result_ids = list(map(
             lambda x: x.get_attribute('id'), 
             driver.find_elements_by_css_selector('#mainbar > div.flush-left.js-search-results > div > div')
         ))
+    # time.sleep(5)
     assert len(result_ids) == 30
 
 def test_50_per_page(driver: webdriver.Chrome):
     test_launch_site(driver)
-    with allure.step('Click to Next'):
+    with allure.step('Click to 50'):
         bt = driver.find_element_by_css_selector('#mainbar > div.s-pagination.page-sizer.fr > a:nth-child(3)')
         bt.click()
         result_ids = list(map(
             lambda x: x.get_attribute('id'), 
             driver.find_elements_by_css_selector('#mainbar > div.flush-left.js-search-results > div > div')
         ))
+    # time.sleep(5)
     assert len(result_ids) == 50
     
